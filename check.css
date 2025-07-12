@@ -1,0 +1,123 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  position: relative;
+}
+body{
+  background-color: rgb(190, 198, 138);
+}
+
+#first{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.head{
+display: flex;
+justify-content: center;
+justify-content:space-evenly;
+margin-top: 50px;
+
+
+}
+
+select{
+  font-size: 1.2rem;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+}
+input{
+   font-size: 1.2rem;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  
+}
+#btn{
+  font-size: 1.2rem;
+  height:40px ;
+  width: 90px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color:green;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+
+}
+th,td{
+  border:1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th{
+  background-color: #4caf50;
+  color: white;
+}
+
+tfoot td{
+  font-weight: bold;
+}
+#Delete{
+   font-size: 1.2rem;
+  height:40px ;
+  width: 90px;
+  border-radius: 8px;
+  background-color: rgb(230, 63, 63);
+  border: none;
+  color: white;
+  
+  
+
+}
+
+
+.expenselist{
+  margin-top: 50px;
+}
+
+#second{
+  text-align: center;
+  margin-bottom: 20px;
+  color: red;
+}
+
+table{
+  font-size: 1.2rem;
+  background-color:#e8e9eb;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .head {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  select,
+  input,
+  #btn {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  table, th, td {
+    font-size: 0.9rem;
+  }
+
+  #Delete {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  #first, #second {
+    font-size: 1.5rem;
+  }
+}
+

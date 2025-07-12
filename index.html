@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="check.css">
+
+</head>
+<body>
+  
+  <h1 id="first"> Expense tracker</h1>
+   <div class="all">
+  <div class="head">
+    <h2> Select Expense:-</h2>
+  <select class="select">
+    <option>Rent</option>
+    <option>Vegetable</option>
+    <option>Grocery</option>
+    <option>petrol</option>
+    <option>food</option>
+    <option>Fruit</option>
+    <option>Hair cut</option>
+    <option>Light bill</option>
+  </select>
+
+  <h2>Amount:-<input type="number" placeholder="amount" id="amountinput"></h3>
+   <h2>Date:-<input type="text" placeholder="ddd/mmm/yyy" id="dateinput"></h3>
+   <button id="btn">add</button>
+
+  </div>
+  </div>
+
+  <div class="expenselist">
+    <h2 id="second">Expense List</h2>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Amount</th>
+         <th>Date</th>
+          <th>Delete</th>
+        </tr>
+
+      </thead>
+      <tbody id="table-body">
+
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td>Total:-</td>
+          <td id="total-amount"></td>
+          <td></td>
+           <td></td>
+
+
+
+        </tr>
+        
+
+      </tfoot>
+
+    </table>
+
+
+  </div>
+  
+</body>
+<script src="check.js"></script>
+</html>
