@@ -3,8 +3,50 @@ const btn = document.getElementById("btn");
 const tableBody = document.getElementById("table-body");
 const totalAmountDisplay = document.getElementById("total-amount");
 
-// This will keep track of total amount
 let totalAmount = 0;
+let entries = JSON.parse(localStorage.getItem("entries")) || [];
+
+// Function to render all entries from localStorage
+function renderEntries() {
+  tableBody.innerHTML = "";
+  totalAmount = 0;
+
+  entries.forEach((entry, index) => {
+    const newRow = document.createElement("tr");
+
+    const categoryCell = document.createElement("td");
+    categoryCell.textContent = entry.category;
+    newRow.appendChild(categoryCell);
+
+    const amountCell = document.createElement("td");
+    amountCell.textContent = parseFloat(entry.amount).toFixed(2);
+    newRow.appendChild(amountCell);
+
+    const dateCell = document.createElement("td");
+    dateCell.textContent = entry.date;
+    newRow.appendChild(dateCell);
+
+    const deleteCell = document.createElement("td");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", function () {
+      entries.splice(index, 1); // Remove from array
+      localStorage.setItem("entries", JSON.stringify(entries)); // Update localStorage
+      renderEntries(); // Re-render table
+    });
+    deleteCell.appendChild(deleteBtn);
+    newRow.appendChild(deleteCell);
+
+    tableBody.appendChild(newRow);
+
+    totalAmount += parseFloat(entry.amount);
+  });
+
+  totalAmountDisplay.textContent = totalAmount.toFixed(2);
+}
+
+// Initial render from localStorage
+renderEntries();
 
 // Add event listener for "Add" button
 btn.addEventListener("click", function () {
@@ -12,54 +54,18 @@ btn.addEventListener("click", function () {
   const amount = parseFloat(document.getElementById("amountinput").value);
   const date = document.getElementById("dateinput").value;
 
-  // Check if any input is empty or invalid
   if (!category || isNaN(amount) || !date) {
     alert("Please fill all the fields correctly.");
     return;
   }
 
-  // Create new table row
-  const newRow = document.createElement("tr");
+  const newEntry = { category, amount, date };
+  entries.push(newEntry);
+  localStorage.setItem("entries", JSON.stringify(entries));
 
-  // Create and append category cell
-  const categoryCell = document.createElement("td");
-  categoryCell.textContent = category;
-  newRow.appendChild(categoryCell);
-
-  // Create and append amount cell
-  const amountCell = document.createElement("td");
-  amountCell.textContent = amount.toFixed(2);
-  newRow.appendChild(amountCell);
-
-  // Create and append date cell
-  const dateCell = document.createElement("td");
-  dateCell.textContent = date;
-  newRow.appendChild(dateCell);
-
-  // Create and append delete button cell
-  const deleteCell = document.createElement("td");
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.id = "Delete";
-  deleteBtn.addEventListener("click", function () {
-    totalAmount -= amount;
-    totalAmountDisplay.textContent = totalAmount.toFixed(2);
-    tableBody.removeChild(newRow);
-  });
-  deleteCell.appendChild(deleteBtn);
-  newRow.appendChild(deleteCell);
-
-  // Append new row to the table body
-  tableBody.appendChild(newRow);
-
-  // Update total
-  totalAmount += amount;
-  totalAmountDisplay.textContent = totalAmount.toFixed(2);
+  renderEntries(); // Re-render table
 
   // Clear inputs
   document.getElementById("amountinput").value = "";
   document.getElementById("dateinput").value = "";
-
-
-  
 });
