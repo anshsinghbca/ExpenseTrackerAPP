@@ -29,10 +29,19 @@ function renderEntries() {
     const deleteCell = document.createElement("td");
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
+    deleteBtn.style.height="40px";
+    deleteBtn.style.width="90px";
+    deleteBtn.style.borderRadius="10px";
+     deleteBtn.style.fontSize="1.2rem";
+     deleteBtn.style.backgroundColor="rgb(230, 63, 63)";
+   
+
     deleteBtn.addEventListener("click", function () {
       entries.splice(index, 1); // Remove from array
       localStorage.setItem("entries", JSON.stringify(entries)); // Update localStorage
       renderEntries(); // Re-render table
+
+      
     });
     deleteCell.appendChild(deleteBtn);
     newRow.appendChild(deleteCell);
