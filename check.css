@@ -4,7 +4,7 @@
   position: relative;
 }
 body{
-  background-color:#fbe3e8;
+  background:linear-gradient(200deg, #153677,#4e085f);
 }
 
 #first{
@@ -25,20 +25,20 @@ select{
   font-size: 1.2rem;
   height: 40px;
   width: 150px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 input{
    font-size: 1.2rem;
   height: 40px;
   width: 150px;
-  border-radius: 5px;
+  border-radius: 10px;
   
 }
 #btn{
   font-size: 1.2rem;
   height:40px ;
   width: 90px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   color: white;
   background-color:green;
