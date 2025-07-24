@@ -177,6 +177,10 @@ table{
     max-width: 300px;
   }
 
+  #amountinput{
+    margin-left: 18px;
+  }
+
   table, th, td {
     font-size: 0.9rem;
   }
